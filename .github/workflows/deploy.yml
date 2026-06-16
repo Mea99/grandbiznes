@@ -1,0 +1,72 @@
+name: Deploy to VPS
+
+# Auto-deploy przy każdym push do main.
+# GrandBiznes to Next.js ze statycznym eksportem (output: 'export').
+# Build robimy na runnerze GitHuba, a gotowy katalog `out/` wgrywamy na VPS
+# do /var/www/grandbiznes.pl (serwowany bezpośrednio przez nginx — bez PM2,
+# bez Node na produkcji). Dzięki temu VPS pozostaje czysty i nic nie koliduje
+# z pozostałymi stronami na serwerze.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-grandbiznes
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Pakuj out/ do tarballa
+        run: tar -czf grandbiznes_out.tar.gz -C out .
+
+      - name: Wyślij tarball na VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER || 'ubuntu' }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          source: grandbiznes_out.tar.gz
+          target: /tmp
+
+      - name: Rozpakuj atomowo do docroot + ustaw uprawnienia
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER || 'ubuntu' }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            set -e
+            DOCROOT=/var/www/grandbiznes.pl
+            STAGE=$(mktemp -d)
+            tar -xzf /tmp/grandbiznes_out.tar.gz -C "$STAGE"
+            # Czyszczenie scaffoldowych svg, których nie używamy
+            rm -f "$STAGE"/next.svg "$STAGE"/vercel.svg "$STAGE"/file.svg "$STAGE"/globe.svg "$STAGE"/window.svg
+            sudo find "$STAGE" -type d -exec chmod 755 {} \;
+            sudo find "$STAGE" -type f -exec chmod 644 {} \;
+            # Podmiana zawartości docroot (atomowo: nowy build do środka, stary kasujemy)
+            sudo mkdir -p "$DOCROOT"
+            sudo rsync -a --delete "$STAGE"/ "$DOCROOT"/
+            sudo chown -R ubuntu:www-data "$DOCROOT"
+            rm -rf "$STAGE" /tmp/grandbiznes_out.tar.gz
+            echo "✅ Wdrożono: $(ls "$DOCROOT" | wc -l) pozycji w $DOCROOT"

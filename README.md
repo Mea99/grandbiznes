@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GrandBiznes — strona-wizytówka + portfolio
 
-## Getting Started
+Mobilna wizytówka jednoosobowego studia stron internetowych **GrandBiznes**.
+Ciemny, premium styl (neon / glow / glassmorphism), 3 motywy kolorystyczne
+(Aurora / Acid / Aurum), przełącznik PL/EN oraz sekcja **„Systemy"** z 12
+działającymi demami na żywo (sklep, lojalność, rezerwacje, newsletter, panel,
+blog, kody rabatowe, ruch, live-powiadomienia, Mystery Box, opinie, języki).
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Tailwind v4** + własny system motywów na zmiennych CSS (`data-theme`)
+- **Static export** (`output: 'export'`) — strona to czyste pliki statyczne
+
+## Rozwój lokalny
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build      # generuje statyczny eksport do ./out
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+Automatyczny: **push do `main`** → GitHub Actions buduje `out/` na runnerze
+i wgrywa go na VPS do `/var/www/grandbiznes.pl` (serwowane przez nginx).
+Workflow: [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
 
-To learn more about Next.js, take a look at the following resources:
+Wymagane sekrety repo (Settings → Secrets and variables → Actions):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Sekret | Wartość |
+|---|---|
+| `VPS_HOST` | `57.128.249.140` |
+| `VPS_USER` | `ubuntu` |
+| `VPS_SSH_KEY` | prywatny klucz SSH z dostępem do VPS |
+| `VPS_PORT` | `22` (opcjonalnie) |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Do podmiany (placeholdery)
 
-## Deploy on Vercel
+W [`src/lib/site.ts`](src/lib/site.ts):
+- e-mail, telefon, Instagram, NIP
+- screenshoty 3 realizacji (obecnie pasiaste placeholdery)
+- logo i portret w sekcji „O mnie"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Formularz kontaktowy: ustaw `FORM_ENDPOINT` w
+[`src/components/Kontakt.tsx`](src/components/Kontakt.tsx) (np. Formspree),
+aby podłączyć realną wysyłkę.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Referencja projektowa
+
+`design_handoff_grandbiznes/` — oryginalny handoff (prototyp HTML + opis).
+Plik `support.js` to runtime prototypu, **nie** jest używany w produkcji.
