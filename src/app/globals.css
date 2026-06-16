@@ -241,6 +241,13 @@ a {
   gap: 8px;
 }
 
+/* Desktop-only nav elements — ukryte na mobile, pokazane w @media (min-width:900px) */
+.gb-nav-links,
+.gb-nav-cta,
+.gb-theme-mini {
+  display: none;
+}
+
 .gb-lang {
   display: flex;
   align-items: center;
@@ -1359,4 +1366,313 @@ a {
   font-size: 11px;
   color: var(--muted);
   opacity: 0.7;
+}
+
+/* ============================================================
+   DESKTOP / PC  (>= 900px)
+   Wersja na duże ekrany: poziome menu, szeroki layout,
+   wielokolumnowe siatki, większy hero, demo jako modal.
+   ============================================================ */
+@media (min-width: 900px) {
+  .gb-page {
+    background: radial-gradient(1400px 850px at 50% -12%, var(--bg2), var(--bg) 55%);
+  }
+  .gb-shell {
+    max-width: 1240px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* ---------- Nav ---------- */
+  .gb-nav {
+    padding: 16px 48px;
+  }
+  .gb-burger {
+    display: none;
+  }
+  .gb-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin: 0 auto;
+  }
+  .gb-nav-links button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: var(--fb);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.18s;
+  }
+  .gb-nav-links button:hover {
+    color: var(--text);
+    background: var(--panel);
+  }
+  .gb-nav-cta {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(120deg, var(--accent), var(--accent2));
+    color: #0a0a12;
+    border: none;
+    font-weight: 700;
+    font-size: 13.5px;
+    padding: 10px 18px;
+    border-radius: 11px;
+    cursor: pointer;
+    font-family: var(--fb);
+    box-shadow: 0 10px 24px rgba(var(--accent-rgb), 0.3);
+  }
+  .gb-theme-mini {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 999px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+  }
+  .gb-theme-mini button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    opacity: 0.45;
+    transition: 0.18s;
+  }
+  .gb-theme-mini button[data-active="true"] {
+    opacity: 1;
+  }
+  .gb-theme-mini .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+
+  /* ---------- Hero ---------- */
+  .gb-hero {
+    text-align: center;
+    padding: 96px 48px 76px;
+  }
+  .gb-hero-badge {
+    margin-bottom: 26px;
+  }
+  .gb-h1 {
+    font-size: 76px;
+    line-height: 1.02;
+    max-width: 900px;
+    margin: 0 auto 22px;
+  }
+  .gb-hero p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .gb-cta-row {
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .gb-btn-primary,
+  .gb-btn-ghost {
+    padding: 16px 26px;
+    font-size: 15.5px;
+  }
+  .gb-stats {
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+  .gb-stat {
+    padding: 22px 14px;
+  }
+  .gb-stat .num {
+    font-size: 38px;
+  }
+  .gb-orb.a {
+    width: 420px;
+    height: 420px;
+    top: -80px;
+    right: 8%;
+  }
+  .gb-orb.b {
+    width: 360px;
+    height: 360px;
+    left: 6%;
+  }
+
+  /* ---------- Marquee ---------- */
+  .gb-marquee {
+    padding: 16px 0;
+  }
+  .gb-marquee-track span {
+    font-size: 14px;
+    padding: 0 20px;
+  }
+
+  /* ---------- Sections (centered, contained) ---------- */
+  .gb-section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 76px 48px;
+    text-align: center;
+  }
+  .gb-section > .gb-h2 {
+    font-size: 42px;
+    margin: 14px 0 8px;
+  }
+  .gb-section > .gb-sub {
+    max-width: 560px;
+    margin: 0 auto 8px;
+    font-size: 15.5px;
+  }
+  /* siatki/karty z powrotem do lewej */
+  .gb-portfolio-grid,
+  .gb-sys-grid,
+  .gb-steps,
+  .gb-prices,
+  .gb-reviews,
+  .gb-faq,
+  .gb-about,
+  .gb-contact,
+  .gb-sys-cta {
+    text-align: left;
+  }
+
+  /* ---------- Realizacje ---------- */
+  .gb-portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 36px !important;
+  }
+  .gb-portfolio-card {
+    margin-bottom: 0;
+  }
+  .gb-browser-shot {
+    height: 150px;
+    font-size: 19px;
+  }
+
+  /* ---------- Systemy ---------- */
+  .gb-sys-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .gb-sys-tile {
+    padding: 18px;
+  }
+  .gb-sys-cta {
+    max-width: 760px;
+    margin: 20px auto 0;
+    text-align: center;
+    font-size: 13.5px;
+    padding: 20px;
+  }
+
+  /* ---------- Proces (4 w rzędzie, układ pionowy) ---------- */
+  .gb-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .gb-step {
+    flex-direction: column;
+    gap: 14px;
+    padding: 22px 18px;
+  }
+
+  /* ---------- Cennik (3 obok siebie) ---------- */
+  .gb-prices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    gap: 18px;
+    max-width: 1000px;
+    margin: 40px auto 0;
+  }
+  .gb-price.hot {
+    transform: scale(1.04);
+  }
+
+  /* ---------- Opinie (3 obok siebie) ---------- */
+  .gb-reviews {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    max-width: 1040px;
+    margin: 36px auto 0;
+  }
+
+  /* ---------- O mnie (2 kolumny) ---------- */
+  .gb-about {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 36px;
+    align-items: center;
+    max-width: 920px;
+    margin: 36px auto 0;
+    padding: 32px;
+  }
+  .gb-about-img {
+    height: 100%;
+    min-height: 220px;
+    margin-bottom: 0;
+  }
+
+  /* ---------- FAQ (wycentrowane, węższe) ---------- */
+  .gb-faq {
+    max-width: 800px;
+    margin: 36px auto 0;
+  }
+  .gb-faq summary {
+    font-size: 15px;
+    padding: 18px 20px;
+  }
+
+  /* ---------- Kontakt ---------- */
+  .gb-contact {
+    max-width: 720px;
+    margin: 36px auto 0;
+    padding: 32px;
+  }
+  .gb-contact-direct a {
+    padding: 14px;
+    font-size: 13.5px;
+  }
+
+  /* ---------- Footer ---------- */
+  .gb-footer {
+    padding: 48px 48px 56px;
+  }
+  .gb-footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Demo jako modal (wycentrowany) ---------- */
+  .gb-sheet-overlay {
+    align-items: center;
+    padding: 24px;
+  }
+  .gb-sheet {
+    max-width: 560px;
+    height: auto;
+    max-height: 86vh;
+    border-radius: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* Bardzo szerokie ekrany — delikatnie większy hero */
+@media (min-width: 1280px) {
+  .gb-h1 {
+    font-size: 86px;
+  }
 }

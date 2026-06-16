@@ -13,7 +13,7 @@ export function Realizacje() {
       <span className="gb-eyebrow">{t("real.eyebrow")}</span>
       <h2 className="gb-h2">{t("real.title")}</h2>
 
-      <div style={{ marginTop: 16 }}>
+      <div className="gb-portfolio-grid" style={{ marginTop: 16 }}>
         {projects.map((p) => {
           const domain = p.url.replace(/^https?:\/\//, "");
           return (

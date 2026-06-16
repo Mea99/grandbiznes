@@ -30,7 +30,38 @@ export function Nav() {
           </span>
         </button>
 
+        {/* Desktop inline menu (ukryte na mobile) */}
+        <nav className="gb-nav-links">
+          {NAV_LINKS.map((l) => (
+            <button key={l.id} onClick={() => goTo(l.id)}>
+              {t(l.key)}
+            </button>
+          ))}
+        </nav>
+
         <div className="gb-nav-right">
+          {/* Mini przełącznik motywu — tylko desktop */}
+          <div className="gb-theme-mini" role="group" aria-label={t("nav.theme")}>
+            {(Object.keys(THEME_DOTS) as Theme[]).map((th) => (
+              <button
+                key={th}
+                data-active={theme === th}
+                onClick={() => setTheme(th)}
+                aria-pressed={theme === th}
+                aria-label={th}
+                title={th.charAt(0).toUpperCase() + th.slice(1)}
+              >
+                <span
+                  className="dot"
+                  style={{
+                    background: THEME_DOTS[th],
+                    boxShadow: `0 0 8px ${THEME_DOTS[th]}`,
+                  }}
+                />
+              </button>
+            ))}
+          </div>
+
           <div className="gb-lang" role="group" aria-label="Język">
             <button
               data-active={lang === "pl"}
@@ -47,6 +78,10 @@ export function Nav() {
               EN
             </button>
           </div>
+
+          <button className="gb-nav-cta" onClick={() => goTo("s-kontakt")}>
+            {t("nav.quote")}
+          </button>
 
           <button
             className="gb-burger"

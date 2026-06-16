@@ -9,6 +9,7 @@ export function Footer() {
 
   return (
     <footer className="gb-footer">
+      <div className="gb-footer-inner">
       <div className="brand">
         <span className="diamond" style={{
           width: 16,
@@ -37,6 +38,7 @@ export function Footer() {
 
       <div className="copy">
         © {year} GrandBiznes. {t("footer.rights")}
+      </div>
       </div>
     </footer>
   );
