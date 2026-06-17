@@ -31,7 +31,10 @@ export function Realizacje() {
                   <span className="dot" />
                   <span className="url">{domain}</span>
                 </div>
-                <div className="gb-browser-shot">{p.name}</div>
+                <div className="gb-browser-shot">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.shot} alt={`Podgląd strony ${p.name}`} loading="lazy" />
+                </div>
               </div>
               <div className="body">
                 <h3 className="title">{p.name}</h3>
