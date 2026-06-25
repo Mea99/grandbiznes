@@ -36,6 +36,16 @@ export function Footer() {
         </a>
       </div>
 
+      <div className="gb-footer-legal">
+        <span>NIP: {site.nip}</span>
+        <span>·</span>
+        <span>MTP Grzegorz Granda</span>
+        <span>·</span>
+        <a href="/polityka-prywatnosci" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: 3 }}>
+          Polityka prywatności
+        </a>
+      </div>
+
       <div className="copy">
         © {year} GrandBiznes. {t("footer.rights")}
       </div>

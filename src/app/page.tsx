@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
 import { Realizacje } from "@/components/Realizacje";
 import { Systemy } from "@/components/Systemy";
+import { Sandbox } from "@/components/Sandbox";
 import { Proces } from "@/components/Proces";
 import { Cennik } from "@/components/Cennik";
 import { Opinie } from "@/components/Opinie";
@@ -21,6 +22,7 @@ export default function Home() {
         <Marquee />
         <Realizacje />
         <Systemy />
+        <Sandbox />
         <Proces />
         <Cennik />
         <Opinie />

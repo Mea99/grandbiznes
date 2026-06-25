@@ -5,9 +5,11 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { dict, type Lang, type DictKey } from "@/lib/i18n";
+import Lenis from "lenis";
 
 export type Theme = "aurora" | "acid" | "aurum";
 
@@ -22,6 +24,8 @@ type Ctx = {
   activeDemo: string | null;
   setActiveDemo: (k: string | null) => void;
   goTo: (id: string) => void;
+  sandboxModules: string[];
+  setSandboxModules: (m: string[]) => void;
 };
 
 const SiteContext = createContext<Ctx | null>(null);
@@ -33,6 +37,31 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Lang>("pl");
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDemo, setActiveDemo] = useState<string | null>(null);
+  const [sandboxModules, setSandboxModules] = useState<string[]>([]);
+  const lenisRef = useRef<Lenis | null>(null);
+
+  // Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+    lenisRef.current = lenis;
+
+    let rafId: number;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      lenisRef.current = null;
+    };
+  }, []);
 
   // hydrate persisted prefs
   useEffect(() => {
@@ -84,7 +113,12 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
   const goTo = useCallback((id: string) => {
     setMenuOpen(false);
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!el) return;
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(el, { offset: -72, duration: 1.2 });
+    } else {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, []);
 
   return (
@@ -100,6 +134,8 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
         activeDemo,
         setActiveDemo,
         goTo,
+        sandboxModules,
+        setSandboxModules,
       }}
     >
       {children}

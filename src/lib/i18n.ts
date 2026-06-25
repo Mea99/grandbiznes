@@ -38,6 +38,7 @@ export const dict = {
     "sys.cta":
       "Nie ma Twojej funkcji? Buduję też systemy szyte na miarę — opisz pomysł, a wycenię.",
     "sys.demoMore": "Zobacz demo →",
+    "sys.sandbox": "Zbuduj swoj zestaw →",
 
     // proces
     "proc.eyebrow": "Jak pracuję",
@@ -61,46 +62,49 @@ export const dict = {
     "price.badge": "Najczęściej wybierany",
     "price.from": "od",
     "price.p1.name": "Wizytówka",
-    "price.p1.amt": "1 200 zł",
+    "price.p1.amt": "1 990 zł",
     "price.p1.f1": "Strona one-page, mobilna",
     "price.p1.f2": "Formularz kontaktowy",
     "price.p1.f3": "Podstawowe SEO",
     "price.p2.name": "Biznes",
-    "price.p2.amt": "2 900 zł",
+    "price.p2.amt": "3 990 zł",
     "price.p2.f1": "Strona wielostronowa + blog",
     "price.p2.f2": "Newsletter + integracje",
     "price.p2.f3": "Animacje i efekty premium",
     "price.p2.f4": "SEO rozszerzone",
     "price.p3.name": "Premium / Sklep",
-    "price.p3.amt": "5 900 zł",
+    "price.p3.amt": "7 990 zł",
     "price.p3.f1": "E-commerce lub panel użytkownika",
     "price.p3.f2": "Lojalność / rezerwacje / płatności",
     "price.p3.f3": "Systemy szyte na miarę",
     "price.note": "Ceny przykładowe — ostateczna wycena po rozmowie.",
     "price.cta": "Wyceń projekt",
+    "price.sandbox": "Nie wiesz, ktory pakiet? Zbuduj swoj zestaw →",
+    "price.g1": "3 rundy poprawek w cenie",
+    "price.g2": "Wdrozenie i konfiguracja w cenie",
+    "price.g3": "30 dni wsparcia po starcie",
 
     // opinie
     "rev.eyebrow": "Opinie",
     "rev.title": "Co mówią klienci",
-    "rev.r1.q":
-      "Strona dowiozła dokładnie to, co obiecaliśmy klientom. Szybko, konkretnie i z głową.",
-    "rev.r1.name": "Kamil",
-    "rev.r1.role": "Akademia Wygrywania",
-    "rev.r2.q":
-      "Sklep działa bez zarzutu, a systemy sprzedażowe realnie podniosły konwersję.",
-    "rev.r2.name": "Marek",
-    "rev.r2.role": "Legalny Diler",
-    "rev.r3.q":
-      "Rezerwacje online i piękna strona — klienci sami chwalą wygląd. Polecam.",
-    "rev.r3.name": "Artur",
-    "rev.r3.role": "Let's Art Barbershop",
+    "rev.emptyTitle": "Pierwsze realizacje w toku",
+    "rev.empty":
+      "Studio właśnie wystartowało. Opinie pierwszych klientów pojawią się tu wkrótce — śledź postępy na Instagramie.",
+    "rev.r1.q": "",
+    "rev.r1.name": "",
+    "rev.r1.role": "",
+    "rev.r2.q": "",
+    "rev.r2.name": "",
+    "rev.r2.role": "",
+    "rev.r3.q": "",
+    "rev.r3.name": "",
+    "rev.r3.role": "",
 
     // o mnie
     "about.eyebrow": "O mnie",
     "about.title": "GrandBiznes — Twoja strona od A do Z",
     "about.body":
       "Jestem jednoosobowym studiem stron internetowych. Łączę projektowanie, kod i myślenie biznesowe — dzięki temu dostajesz nie tylko ładną stronę, ale narzędzie, które realnie pracuje na Twój biznes. Od briefu, przez projekt, po wdrożenie i opiekę.",
-    "about.imgph": "[ portret / logo ]",
 
     // faq
     "faq.eyebrow": "FAQ",
@@ -122,6 +126,7 @@ export const dict = {
       "Zostaję na opiece — aktualizacje, drobne zmiany, monitoring i pomoc techniczna. Nie zostawiam klienta samego.",
 
     // kontakt
+    "contact.response": "Odpiszę w ciągu 24 godzin",
     "contact.eyebrow": "Kontakt",
     "contact.title": "Zróbmy coś dobrego",
     "contact.sub":
@@ -139,6 +144,25 @@ export const dict = {
     "contact.okTitle": "Dzięki! Wiadomość wysłana.",
     "contact.okSub": "Odezwę się najszybciej jak to możliwe.",
     "contact.again": "Wyślij kolejną",
+
+    // sandbox
+    "sandbox.eyebrow": "Studio Sandbox",
+    "sandbox.title": "Zbuduj swoja strone",
+    "sandbox.sub": "Zaznacz moduly, ktore chcesz na swojej stronie — wycena aktualizuje sie na zywo.",
+    "sandbox.preview": "Twoj projekt",
+    "sandbox.empty": "Zaznacz pierwszy modul, aby zobaczyc podglad",
+    "sandbox.pkg.wizytowka": "Wizytowka",
+    "sandbox.pkg.biznes": "Biznes",
+    "sandbox.pkg.premium": "Premium / Sklep",
+    "sandbox.from": "od",
+    "sandbox.send": "Wyslij konfiguracje do wyceny",
+    "sandbox.sendSub": "Formularz wypelni sie Twoja konfiguracja",
+    "sandbox.nextBiznes": "Dodaj jeszcze 1 modul → pakiet Biznes",
+    "sandbox.nextPremium1": "Jeszcze 1 modul → pakiet Premium",
+    "sandbox.nextPremium2": "Jeszcze kilka modulow → pakiet Premium",
+    "sandbox.cfgLabel": "Twoja konfiguracja z Sandbox",
+    "sandbox.cfgNote": "Zmien lub uzupelnij wiadomosc ponizej",
+    "sandbox.reset": "Wyczysc",
 
     // footer
     "footer.desc":
@@ -183,6 +207,7 @@ export const dict = {
     "sys.cta":
       "Don't see your feature? I also build custom systems — describe the idea and I'll quote it.",
     "sys.demoMore": "See demo →",
+    "sys.sandbox": "Build your bundle →",
 
     "proc.eyebrow": "How I work",
     "proc.title": "From idea to launch",
@@ -203,44 +228,49 @@ export const dict = {
     "price.badge": "Most popular",
     "price.from": "from",
     "price.p1.name": "Business card",
-    "price.p1.amt": "1,200 zł",
+    "price.p1.amt": "1 990 zł",
     "price.p1.f1": "One-page, mobile site",
     "price.p1.f2": "Contact form",
     "price.p1.f3": "Basic SEO",
     "price.p2.name": "Business",
-    "price.p2.amt": "2,900 zł",
+    "price.p2.amt": "3 990 zł",
     "price.p2.f1": "Multi-page site + blog",
     "price.p2.f2": "Newsletter + integrations",
     "price.p2.f3": "Premium animations & effects",
     "price.p2.f4": "Advanced SEO",
     "price.p3.name": "Premium / Store",
-    "price.p3.amt": "5,900 zł",
+    "price.p3.amt": "7 990 zł",
     "price.p3.f1": "E-commerce or user panel",
     "price.p3.f2": "Loyalty / booking / payments",
     "price.p3.f3": "Custom-built systems",
     "price.note": "Sample prices — final quote after a chat.",
     "price.cta": "Get a quote",
+    "price.sandbox": "Not sure which package? Build your bundle →",
+    "price.g1": "3 rounds of revisions included",
+    "price.g2": "Deployment & setup included",
+    "price.g3": "30 days post-launch support",
+
+    "contact.response": "I'll reply within 24 hours",
 
     "rev.eyebrow": "Reviews",
     "rev.title": "What clients say",
-    "rev.r1.q":
-      "The site delivered exactly what we promised our clients. Fast, focused and smart.",
-    "rev.r1.name": "Kamil",
-    "rev.r1.role": "Akademia Wygrywania",
-    "rev.r2.q":
-      "The store works flawlessly and the sales systems genuinely lifted conversion.",
-    "rev.r2.name": "Marek",
-    "rev.r2.role": "Legalny Diler",
-    "rev.r3.q":
-      "Online booking and a beautiful site — clients praise the look themselves. Recommended.",
-    "rev.r3.name": "Artur",
-    "rev.r3.role": "Let's Art Barbershop",
+    "rev.emptyTitle": "First projects in progress",
+    "rev.empty":
+      "The studio just launched. Reviews from our first clients will appear here soon — follow the updates on Instagram.",
+    "rev.r1.q": "",
+    "rev.r1.name": "",
+    "rev.r1.role": "",
+    "rev.r2.q": "",
+    "rev.r2.name": "",
+    "rev.r2.role": "",
+    "rev.r3.q": "",
+    "rev.r3.name": "",
+    "rev.r3.role": "",
 
     "about.eyebrow": "About",
     "about.title": "GrandBiznes — your site from A to Z",
     "about.body":
       "I'm a one-person web design studio. I combine design, code and business thinking — so you get not just a pretty site, but a tool that truly works for your business. From brief, through design, to launch and support.",
-    "about.imgph": "[ portrait / logo ]",
 
     "faq.eyebrow": "FAQ",
     "faq.title": "Frequently asked",
@@ -277,6 +307,24 @@ export const dict = {
     "contact.okTitle": "Thanks! Message sent.",
     "contact.okSub": "I'll get back to you as soon as possible.",
     "contact.again": "Send another",
+
+    "sandbox.eyebrow": "Studio Sandbox",
+    "sandbox.title": "Build your site",
+    "sandbox.sub": "Select the modules you want — live pricing updates instantly.",
+    "sandbox.preview": "Your project",
+    "sandbox.empty": "Select a module to see the preview",
+    "sandbox.pkg.wizytowka": "Business card",
+    "sandbox.pkg.biznes": "Business",
+    "sandbox.pkg.premium": "Premium / Store",
+    "sandbox.from": "from",
+    "sandbox.send": "Send config for a quote",
+    "sandbox.sendSub": "Form will be pre-filled with your config",
+    "sandbox.nextBiznes": "Add 1 more module → Business package",
+    "sandbox.nextPremium1": "1 more module → Premium package",
+    "sandbox.nextPremium2": "A few more modules → Premium package",
+    "sandbox.cfgLabel": "Your Sandbox configuration",
+    "sandbox.cfgNote": "Edit or add to the message below",
+    "sandbox.reset": "Clear",
 
     "footer.desc":
       "A studio for websites and online stores. Design, code and care — all in one place.",

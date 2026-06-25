@@ -1,11 +1,11 @@
 // Dane kontaktowe / firmowe — PLACEHOLDERY do podmiany przez klienta.
 export const site = {
   email: "kontakt@grandbiznes.pl",
-  phone: "+48 600 000 000",
-  phoneHref: "+48600000000",
+  phone: "+48 787 754 147",
+  phoneHref: "+48787754147",
   instagram: "https://instagram.com/grandbiznes",
   instagramHandle: "@grandbiznes",
-  nip: "", // do uzupełnienia
+  nip: "9182178204",
 };
 
 // Realizacje (portfolio)

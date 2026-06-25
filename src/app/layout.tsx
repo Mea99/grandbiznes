@@ -8,6 +8,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { SiteProvider } from "@/components/SiteProvider";
+import { Cursor } from "@/components/Cursor";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -83,7 +84,10 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${manrope.variable} ${sora.variable} ${marcellus.variable} ${jetbrainsMono.variable}`}
       >
-        <SiteProvider>{children}</SiteProvider>
+        <SiteProvider>
+          <Cursor />
+          {children}
+        </SiteProvider>
       </body>
     </html>
   );
