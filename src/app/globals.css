@@ -168,9 +168,7 @@ a {
 /* ============================================================
    Custom cursor (desktop / fine pointer only)
    ============================================================ */
-@media (pointer: fine) {
-  * { cursor: none !important; }
-}
+.gb-cursor-active * { cursor: none !important; }
 
 .gb-cursor-dot {
   position: fixed;
